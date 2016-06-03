@@ -5,9 +5,6 @@ public class Main {
 
         SimpleDotCom simpleDotCom = new SimpleDotCom();
         Player player = new Player();
-        int[] locations = {2, 3, 4};
-
-        simpleDotCom.setLocationCells(locations);
 
         while (simpleDotCom.isFloating()) {
             String userGuess = player.getResponse("Where do you think the battleship is?");

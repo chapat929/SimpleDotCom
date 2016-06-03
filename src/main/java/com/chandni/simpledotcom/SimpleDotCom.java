@@ -1,16 +1,23 @@
 package com.chandni.simpledotcom;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SimpleDotCom {
-    private int[] locations;
     private int numOfHits;
     private boolean isFloating;
+    private List<Integer> locations;
 
     public SimpleDotCom() {
         isFloating = true;
+        setLocationCells();
     }
 
-    public void setLocationCells(int[] locations) {
-        this.locations = locations;
+    public void setLocationCells() {
+        locations = new ArrayList<Integer>();
+        locations.add(2);
+        locations.add(3);
+        locations.add(4);
     }
 
     public String checkYourself(String userGuess) {
@@ -19,20 +26,18 @@ public class SimpleDotCom {
 
         for (int cell : locations) {
             if (guess == cell) {
-                numOfHits++;
+                locations.remove(locations.indexOf(cell));
                 result = "Congrats, you hit my battleship";
                 break;
             }
         }
 
-        if (!isFloating) {
-            result = "You sunk my battleship! You've won! The battle is over!";
-        }
+        if (locations.size() == 0) result = "You sunk my battleship! You've won! The battle is over!";
 
         return result;
     }
 
     public boolean isFloating() {
-        return numOfHits < locations.length;
+        return locations.size() != 0;
     }
 }
