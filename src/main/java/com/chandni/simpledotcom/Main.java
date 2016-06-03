@@ -9,10 +9,10 @@ public class Main {
 
         simpleDotCom.setLocationCells(locations);
 
-        String userGuess = player.getResponse("Where do you think the battleship is?");
-
-        String result = simpleDotCom.checkYourself(userGuess);
-        System.out.println(result);
-
+        while (simpleDotCom.isFloating()) {
+            String userGuess = player.getResponse("Where do you think the battleship is?");
+            String result = simpleDotCom.checkYourself(userGuess);
+            System.out.println(result);
+        }
     }
 }

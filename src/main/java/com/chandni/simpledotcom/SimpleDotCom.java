@@ -3,9 +3,13 @@ package com.chandni.simpledotcom;
 public class SimpleDotCom {
     private int[] locations;
     private int numOfHits;
+    private boolean isFloating;
+
+    public SimpleDotCom() {
+        isFloating = true;
+    }
 
     public void setLocationCells(int[] locations) {
-
         this.locations = locations;
     }
 
@@ -21,11 +25,14 @@ public class SimpleDotCom {
             }
         }
 
-        if (numOfHits == locations.length) {
+        if (!isFloating) {
             result = "You sunk my battleship! You've won! The battle is over!";
         }
 
-
         return result;
+    }
+
+    public boolean isFloating() {
+        return numOfHits < locations.length;
     }
 }
