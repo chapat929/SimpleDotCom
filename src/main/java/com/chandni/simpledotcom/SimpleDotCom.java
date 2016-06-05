@@ -22,10 +22,17 @@ public class SimpleDotCom {
 
     public String checkYourself(String userGuess) {
         String result = "You missed my battleship";
-        int guess = Integer.parseInt(userGuess);
+        int guess;
+
+        try {
+            guess = Integer.parseInt(userGuess);
+        } catch (NumberFormatException e) {
+            guess = -1;
+            System.out.println("Sorry that's not a valid number");
+        }
 
         for (int cell : locations) {
-            if (guess == cell) {
+            if (cell == guess) {
                 locations.remove(locations.indexOf(cell));
                 result = "Congrats, you hit my battleship";
                 break;
